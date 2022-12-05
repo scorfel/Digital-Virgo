@@ -6,26 +6,31 @@ import { ToolbarOverviewExample } from './header/header.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { PostComponent } from './post/post.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
-import { CardOverviewExample } from './card/card.component'
-
+import { CardOverviewExample } from './card/card.component';
+import { PostDetailsComponent } from './post-details/post-details.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarOverviewExample,
-    PostComponent,
-    CardOverviewExample
+    CardOverviewExample,
+    PostDetailsComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     HttpClientModule,
     AppRoutingModule,
     NoopAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatDividerModule,
+    MatProgressBarModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

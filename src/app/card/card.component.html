@@ -1,5 +1,6 @@
 <mat-card *ngFor="let post of postsFromApi">
-    <a>
+    <a routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page">
         <mat-card-content>{{post.title}}</mat-card-content>
     </a>
 </mat-card>
+<router-outlet></router-outlet>
