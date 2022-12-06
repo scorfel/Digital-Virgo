@@ -12,22 +12,40 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 
 export class PostDetailsComponent implements OnInit {
+
   id!: string
+  postDetails!: any
+  postComments!: any
+  userDetails!: any
+
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+
     this.route.queryParams.subscribe(params => {
       this.id = params['id'];
     });
-    this.http.get<any>('https://jsonplaceholder.typicode.com/posts/' + this.id).subscribe(response => { console.log(response) })
+
+    this.http.get<any>('https://jsonplaceholder.typicode.com/posts/' + this.id).subscribe(response => {
+
+      this.postDetails = response,
+        console.log(this.postDetails),
+
+        this.http.get<any>('https://jsonplaceholder.typicode.com/users/' + this.postDetails.userId).subscribe(response => {
+          this.userDetails = response
+        })
+    })
+
   }
 
-  longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
-//   from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-//   originally bred for hunting.`;
+  showComment() {
+    this.http.get<any>(`https://jsonplaceholder.typicode.com/posts/${this.postDetails.id}/comments`)
+      .subscribe(response => /*console.log(response),*/ this.postComments = response)
+  }
+
 }
 
 // import {Component} from '@angular/core';
