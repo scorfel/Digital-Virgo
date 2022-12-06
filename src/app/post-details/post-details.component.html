@@ -1,19 +1,33 @@
-<mat-card class="example-card">
-    <mat-card-header>
-        <mat-card-subtitle>User : {{userDetails.name}}</mat-card-subtitle>
-        <mat-card-subtitle>Company : {{userDetails.company.name}}</mat-card-subtitle>
-        <mat-card-title>{{postDetails.title}}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <!-- <p>This card has divider and indeterminate progress as footer</p> -->
-        <p>{{ postDetails.body }}</p>
-        <mat-divider></mat-divider>
-    </mat-card-content>
-    <mat-card-actions>
-        <button (click)="showComment()" mat-button>SHOW COMMENT</button>
-        <button mat-button>SHARE</button>
-    </mat-card-actions>
-    <mat-card-footer>
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-    </mat-card-footer>
-</mat-card>
+<ng-container *ngIf="postDetails && userDetails ">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-subtitle>User : {{userDetails.name}}</mat-card-subtitle>
+            <mat-card-subtitle>Company : {{userDetails.company.name}}</mat-card-subtitle>
+            <mat-card-title>{{userDetails.title}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <!-- <p>This card has divider and indeterminate progress as footer</p> -->
+            <p>{{ postDetails.body }}</p>
+            <mat-divider></mat-divider>
+        </mat-card-content>
+        <mat-card-actions>
+            <button (click)="showComment()" mat-button>SHOW COMMENT</button>
+            <button mat-button>ADD COMMENT</button>
+        </mat-card-actions>
+        <mat-card-footer>
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </mat-card-footer>
+    </mat-card>
+</ng-container>
+
+<ng-container *ngIf="showComments">
+    <mat-card *ngFor="let comment of postComments" class="example-card">
+        <mat-card-header>
+            <mat-card-subtitle>{{comment.email}}</mat-card-subtitle>
+            <mat-card-subtitle>{{comment.name}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{comment.body}}</p>
+        </mat-card-content>
+    </mat-card>
+</ng-container>
