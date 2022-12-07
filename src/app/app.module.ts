@@ -12,6 +12,8 @@ import { CardOverviewExample } from './card/card.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +32,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatCardModule,
     MatDividerModule,
     MatProgressBarModule,
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   providers: [],
