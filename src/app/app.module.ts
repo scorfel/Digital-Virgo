@@ -13,13 +13,16 @@ import { PostDetailsComponent } from './post-details/post-details.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PostFormComponent } from './post-form/post-form.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarOverviewExample,
     CardOverviewExample,
-    PostDetailsComponent
+    PostDetailsComponent,
+    PostFormComponent
   ],
   imports: [
     BrowserModule,
@@ -33,8 +36,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDividerModule,
     MatProgressBarModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

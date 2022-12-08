@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
 
 /**
  * @title Basic cards
@@ -11,26 +10,19 @@ import { FormBuilder } from '@angular/forms';
     styleUrls: ['./card.component.scss']
 })
 export class CardOverviewExample {
-
+    items = ['item1', 'item2', 'item3', 'item4'];
     postsFromApi: any = undefined
-    checkoutForm = this.formBuilder.group({
-        name: '',
-        address: ''
-    });
 
+    addItem(newItem: any) {
+        this.items.push(newItem)
+        console.log(newItem);
+    }
     constructor(
         private http: HttpClient,
-        private formBuilder: FormBuilder
     ) { }
 
     ngOnInit(): void {
         this.http.get<any>('https://jsonplaceholder.typicode.com/posts').subscribe(response => { console.log(response), this.postsFromApi = response })
     }
 
-    onSubmit(): void {
-        // Process checkout data here
-        // this.items = this.cartService.clearCart();
-        console.warn('Your order has been submitted', this.checkoutForm.value);
-        this.checkoutForm.reset();
-    }
 }

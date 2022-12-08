@@ -1,23 +1,4 @@
-<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
-
-    <div>
-        <label for="name">
-            Name
-        </label>
-        <input id="name" type="text" formControlName="name">
-    </div>
-
-    <div>
-        <label for="address">
-            Address
-        </label>
-        <input id="address" type="text" formControlName="address">
-    </div>
-
-    <button class="button" type="submit">Purchase</button>
-
-</form>
-
+<app-post-form (newItemEvent)="addItem($event)"></app-post-form>
 <mat-card *ngFor="let post of postsFromApi">
     <a routerLink="/second-component/" [queryParams]="{ id: post.id}" routerLinkActive="active"
         ariaCurrentWhenActive="page">
