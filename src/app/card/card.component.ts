@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class CardOverviewExample {
     items = ['item1', 'item2', 'item3', 'item4'];
     postsFromApi: any = undefined
+    displayFormAddPost: boolean = false
 
     addItem(newItem: any) {
         this.items.push(newItem)
@@ -23,6 +24,10 @@ export class CardOverviewExample {
 
     ngOnInit(): void {
         this.http.get<any>('https://jsonplaceholder.typicode.com/posts').subscribe(response => { console.log(response), this.postsFromApi = response })
+    }
+
+    toggleFormAddPost(): void {
+        this.displayFormAddPost ? this.displayFormAddPost = false : this.displayFormAddPost = true
     }
 
 }

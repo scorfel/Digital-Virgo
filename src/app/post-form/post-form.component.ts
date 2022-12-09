@@ -20,7 +20,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class PostFormComponent implements OnInit {
 
   @Output() newItemEvent = new EventEmitter<any>();
-  // newItem!: string
+
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   newPost!: any
   matcher = new MyErrorStateMatcher();
@@ -28,6 +28,7 @@ export class PostFormComponent implements OnInit {
     title: '',
     body: ''
   });
+
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,

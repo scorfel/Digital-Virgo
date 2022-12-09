@@ -1,4 +1,9 @@
-<app-post-form (newItemEvent)="addItem($event)"></app-post-form>
+<section>
+    <div class="example-button-row">
+        <button (click)="toggleFormAddPost()" mat-raised-button color="primary">Add new post</button>
+    </div>
+</section>
+<app-post-form *ngIf="displayFormAddPost" (newItemEvent)="addItem($event)"></app-post-form>
 <mat-card *ngFor="let post of postsFromApi">
     <a routerLink="/second-component/" [queryParams]="{ id: post.id}" routerLinkActive="active"
         ariaCurrentWhenActive="page">
