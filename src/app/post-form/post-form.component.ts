@@ -1,16 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
 import { Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-// export class MyErrorStateMatcher implements ErrorStateMatcher {
-//   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-//     const isSubmitted = form && form.submitted;
-//     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-//   }
-// }
+interface NewPost {
+  userId: number,
+  title: string,
+  body: string
+}
 
 @Component({
   selector: 'app-post-form',
@@ -18,13 +15,11 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./post-form.component.scss']
 })
 
-export class PostFormComponent implements OnInit {
+export class PostFormComponent {
 
   @Output() newItemEvent = new EventEmitter<any>();
 
-  // emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  newPost!: any
-  // matcher = new MyErrorStateMatcher();
+  newPost!: NewPost
   checkoutForm = this.formBuilder.group({
     title: '',
     body: ''
@@ -39,11 +34,10 @@ export class PostFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createNewPost(title: any, body: any) {
+  createNewPost(title: string, body: string) {
     this.loader = true
-    console.log(title, body)
     this.newPost = { "userId": 1, "title": title, "body": body }
-    this.http.post<any>('https://jsonplaceholder.typicode.com/posts', this.newPost)
+    this.http.post<NewPost>('https://jsonplaceholder.typicode.com/posts', this.newPost)
       .subscribe(response => {
         this.newItemEvent.emit(response);
         this.checkoutForm.reset();
@@ -52,11 +46,5 @@ export class PostFormComponent implements OnInit {
 
   }
 
-  // onSubmit(): void {
-  //   // Process checkout data here
-  //   // this.items = this.cartService.clearCart();
-  //   console.warn('Your order has been submitted', this.checkoutForm.value);
-  //   this.checkoutForm.reset();
-  // }
 }
 

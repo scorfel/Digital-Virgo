@@ -3,10 +3,6 @@
         <mat-label>Title</mat-label>
         <input matInput formControlName="title" placeholder="Title" #title>
     </mat-form-field>
-    <!-- <mat-form-field class="example-full-width">
-        <mat-label>Body</mat-label>
-        <input type="text" matInput placeholder="Body" #body>
-    </mat-form-field> -->
 
     <mat-form-field class="example-full-width">
         <mat-label>Enter your post</mat-label>
@@ -14,28 +10,7 @@
     </mat-form-field>
 
     <div>
-        <button type="submit">Send new post</button>
+        <button mat-raised-button color="primary" type="submit">Send new post</button>
         <app-spinner *ngIf="loader"></app-spinner>
     </div>
-
 </form>
-
-<!-- <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
-
-    <div>
-        <label for="name">
-            Name
-        </label>
-        <input id="name" type="text" formControlName="name">
-    </div>
-
-    <div>
-        <label for="address">
-            Address
-        </label>
-        <input id="address" type="text" formControlName="address">
-    </div>
-
-    <button class="button" type="submit">Purchase</button>
-
-</form> -->
