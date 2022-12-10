@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -9,18 +9,10 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./comment-form.component.scss']
 })
 
-export class CommentFormComponent implements OnInit {
+export class CommentFormComponent {
+
   @Input() PostId!: number
   @Output() newItemEvent = new EventEmitter<any>();
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private http: HttpClient,
-  ) { }
-
-  ngOnInit(): void {
-    console.log(this.PostId)
-  }
 
   loader: boolean = false
   newComment!: {
@@ -35,6 +27,11 @@ export class CommentFormComponent implements OnInit {
     body: ''
   });
 
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+  ) { }
+
   addNewComment(email: any, name: any, body: any) {
     this.loader = true
     this.newComment = {
@@ -43,15 +40,13 @@ export class CommentFormComponent implements OnInit {
       "name": name,
       "body": body
     }
-    console.log(this.newComment)
     this.http.post<any>(`https://jsonplaceholder.typicode.com/posts/${this.newComment.postId}/comments`, this.newComment)
       .subscribe(response => {
-        console.log(response)
-
         this.newItemEvent.emit(response);
         this.addCommentForm.reset();
         this.loader = false;
       })
 
   }
+
 }
