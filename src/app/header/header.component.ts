@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 
-/**
- * @title Toolbar overview
- */
 @Component({
   selector: 'toolbar-overview-example',
   templateUrl: 'header.component.html',
