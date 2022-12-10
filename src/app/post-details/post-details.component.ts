@@ -18,6 +18,7 @@ export class PostDetailsComponent implements OnInit {
   postComments!: any
   userDetails!: any
   showComments: boolean = false
+  showFormToAddComment: boolean = false
 
   constructor(
     private http: HttpClient,
@@ -25,11 +26,9 @@ export class PostDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this.route.queryParams.subscribe(params => {
       this.id = params['id'];
     });
-
     this.http.get<any>('https://jsonplaceholder.typicode.com/posts/' + this.id)
       .subscribe(response => {
         this.postDetails = response
@@ -40,11 +39,20 @@ export class PostDetailsComponent implements OnInit {
                 .subscribe(response => { console.log(response), this.postComments = response })
           })
       })
-
   }
 
   showComment() {
     this.showComments ? this.showComments = false : this.showComments = true
+  }
+
+  showFormAddComment() {
+    this.showFormToAddComment ? this.showFormToAddComment = false : this.showFormToAddComment = true
+  }
+
+  addNewComment(newComment: any) {
+    console.log(newComment)
+    this.postComments.splice(0, 0, newComment)
+    this.showFormToAddComment = false
   }
 
 }
