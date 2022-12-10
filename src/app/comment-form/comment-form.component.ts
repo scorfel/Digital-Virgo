@@ -6,6 +6,7 @@ import { FormBuilder } from '@angular/forms';
   templateUrl: './comment-form.component.html',
   styleUrls: ['./comment-form.component.scss']
 })
+
 export class CommentFormComponent implements OnInit {
 
   constructor(
@@ -15,10 +16,28 @@ export class CommentFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  newComment!: {
+    postId: number,
+    email: '',
+    name: '',
+    body: ''
+  }
+
   addCommentForm = this.formBuilder.group({
     email: '',
     name: '',
     body: ''
   });
 
+  addNewComment(email: any, name: any, body: any) {
+    this.newComment = {
+      "postId": 1,
+      "email": email,
+      "name": name,
+      "body": body
+    }
+    console.log(this.newComment)
+
+  }
 }

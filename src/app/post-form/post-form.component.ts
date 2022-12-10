@@ -22,7 +22,7 @@ export class PostFormComponent implements OnInit {
 
   @Output() newItemEvent = new EventEmitter<any>();
 
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  // emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   newPost!: any
   // matcher = new MyErrorStateMatcher();
   checkoutForm = this.formBuilder.group({
