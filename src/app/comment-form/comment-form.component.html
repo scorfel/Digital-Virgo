@@ -1,22 +1,24 @@
 <form class="example-form" [formGroup]="addCommentForm" (ngSubmit)="addNewComment(email.value,name.value,body.value)">
 
     <mat-form-field class="example-full-width">
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email" placeholder="email" #email>
+        <mat-label>Email *</mat-label>
+        <input [ngStyle]="emailValidate ? {'color': 'green'}:{'color': 'red'}" matInput formControlName="email"
+            (ngModelChange)="checkEmail($event)" placeholder="email *" #email>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="name" placeholder="name" #name>
+        <mat-label>Name *</mat-label>
+        <input (ngModelChange)="checkNameNotEmpty($event)" matInput formControlName="name" placeholder="name *" #name>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-        <mat-label>Enter your comment</mat-label>
-        <textarea matInput formControlName="body" placeholder="Body" #body></textarea>
+        <mat-label>Enter your comment *</mat-label>
+        <textarea (ngModelChange)="checkCommentNotEmpty($event)" matInput formControlName="body" placeholder="Body"
+            #body></textarea>
     </mat-form-field>
 
     <div>
-        <button mat-raised-button color="primary" type="submit">Send new comment</button>
+        <button [disabled]="!formValidate" mat-raised-button color="primary" type="submit">Send new comment</button>
         <app-spinner *ngIf="loader"></app-spinner>
     </div>
 
