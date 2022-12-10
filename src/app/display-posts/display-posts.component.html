@@ -5,7 +5,6 @@
             <button (click)="toggleFormAddPost()" mat-raised-button color="primary">Add new post</button>
         </div>
     </section>
-
     <app-post-form *ngIf="displayFormAddPost" (newItemEvent)="addNewPost($event)"></app-post-form>
 
     <mat-card *ngFor="let post of postsFromApi">
@@ -15,5 +14,4 @@
         </a>
     </mat-card>
 </ng-container>
-
 <router-outlet></router-outlet>

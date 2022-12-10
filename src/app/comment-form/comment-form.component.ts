@@ -16,8 +16,6 @@ interface NewComment {
   styleUrls: ['./comment-form.component.scss']
 })
 
-
-
 export class CommentFormComponent {
 
   @Input() PostId!: number

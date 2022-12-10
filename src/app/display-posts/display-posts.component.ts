@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-/**
- * @title Basic cards
- */
+interface Posts {
+    userId: number,
+    id: number,
+    title: string,
+    body: string
+}
 
 @Component({
     selector: 'display-posts',
@@ -13,7 +16,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class DisplayPosts {
 
-    postsFromApi: any = undefined
+    postsFromApi!: Array<Posts>
     displayFormAddPost: boolean = false
     getAllPosts: boolean = false
 
@@ -22,7 +25,7 @@ export class DisplayPosts {
     ) { }
 
     ngOnInit(): void {
-        this.http.get<any>('https://jsonplaceholder.typicode.com/posts')
+        this.http.get<Array<Posts>>('https://jsonplaceholder.typicode.com/posts')
             .subscribe(response => { this.postsFromApi = response, this.getAllPosts = true })
     }
 
