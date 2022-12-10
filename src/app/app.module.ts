@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { CommentFormComponent } from './comment-form/comment-form.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     CardOverviewExample,
     PostDetailsComponent,
     PostFormComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    CommentFormComponent
   ],
   imports: [
     BrowserModule,

@@ -11,14 +11,15 @@
             <mat-divider></mat-divider>
         </mat-card-content>
         <mat-card-actions>
-            <button (click)="showComment()" mat-button>SHOW COMMENT</button>
-            <button mat-button>ADD COMMENT</button>
+            <button mat-raised-button color="primary" (click)="showComment()">SHOW COMMENT</button>
+            <button mat-raised-button color="primary">ADD COMMENT</button>
         </mat-card-actions>
-        <mat-card-footer>
+        <!-- <mat-card-footer>
             <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-        </mat-card-footer>
+        </mat-card-footer> -->
     </mat-card>
 </ng-container>
+<app-comment-form></app-comment-form>
 
 <ng-container *ngIf="showComments">
     <mat-card *ngFor="let comment of postComments" class="example-card">
