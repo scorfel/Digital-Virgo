@@ -25,14 +25,14 @@ export class PostFormComponent {
     body: ''
   });
   loader: boolean = false
+  titleValidate: boolean = false
+  postValidate: boolean = false
+  formValidate: boolean = false
 
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
   ) { }
-
-  ngOnInit(): void {
-  }
 
   createNewPost(title: string, body: string) {
     this.loader = true
@@ -43,7 +43,32 @@ export class PostFormComponent {
         this.checkoutForm.reset();
         this.loader = false;
       })
+  }
 
+  enableButtonSubmit(titleValidate: boolean, postValidate: boolean) {
+    if (titleValidate && postValidate) {
+      this.formValidate = true
+    }
+  }
+
+  checkTitleNotEmpty(event: string) {
+    if (event != '') {
+      this.titleValidate = true
+      this.enableButtonSubmit(this.titleValidate, this.postValidate)
+    } else {
+      this.titleValidate = false
+      this.formValidate = false
+    }
+  }
+
+  checkPostNotEmpty(event: string) {
+    if (event != '') {
+      this.postValidate = true
+      this.enableButtonSubmit(this.titleValidate, this.postValidate)
+    } else {
+      this.postValidate = false
+      this.formValidate = false
+    }
   }
 
 }

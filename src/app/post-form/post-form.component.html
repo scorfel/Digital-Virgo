@@ -1,16 +1,17 @@
 <form class="example-form" [formGroup]="checkoutForm" (ngSubmit)="createNewPost(title.value,body.value)">
     <mat-form-field class="example-full-width">
         <mat-label>Title</mat-label>
-        <input matInput formControlName="title" placeholder="Title" #title>
+        <input (ngModelChange)="checkTitleNotEmpty($event)" matInput formControlName="title" placeholder="Title" #title>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
         <mat-label>Enter your post</mat-label>
-        <textarea matInput formControlName="body" placeholder="Body" #body></textarea>
+        <textarea (ngModelChange)="checkPostNotEmpty($event)" matInput formControlName="body" placeholder="Body"
+            #body></textarea>
     </mat-form-field>
 
     <div>
-        <button mat-raised-button color="primary" type="submit">Send new post</button>
+        <button [disabled]="!formValidate" mat-raised-button color="primary" type="submit">Send new post</button>
         <app-spinner *ngIf="loader"></app-spinner>
     </div>
 </form>
