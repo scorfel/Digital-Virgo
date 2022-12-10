@@ -15,13 +15,15 @@ export class DisplayPosts {
 
     postsFromApi: any = undefined
     displayFormAddPost: boolean = false
+    getAllPosts: boolean = false
 
     constructor(
         private http: HttpClient,
     ) { }
 
     ngOnInit(): void {
-        this.http.get<any>('https://jsonplaceholder.typicode.com/posts').subscribe(response => this.postsFromApi = response)
+        this.http.get<any>('https://jsonplaceholder.typicode.com/posts')
+            .subscribe(response => { this.postsFromApi = response, this.getAllPosts = true })
     }
 
     addNewPost(newPost: any) {

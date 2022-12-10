@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DisplayPosts } from './card/display-posts.component'
+import { DisplayPosts } from './display-posts/display-posts.component'
 import { PostDetailsComponent } from './post-details/post-details.component'
 import { AppComponent } from './app.component';
 
