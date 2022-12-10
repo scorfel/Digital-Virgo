@@ -48,7 +48,6 @@ export class PostDetailsComponent implements OnInit {
   }
 
   addNewComment(newComment: any): void {
-    console.log(newComment)
     this.postComments.splice(0, 0, newComment)
     this.showFormToAddComment = false
   }
