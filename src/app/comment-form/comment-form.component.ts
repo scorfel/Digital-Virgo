@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class CommentFormComponent implements OnInit {
-
+  @Input() PostId!: number
   @Output() newItemEvent = new EventEmitter<any>();
 
   constructor(
@@ -19,6 +19,7 @@ export class CommentFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.PostId)
   }
 
   loader: boolean = false
@@ -37,7 +38,7 @@ export class CommentFormComponent implements OnInit {
   addNewComment(email: any, name: any, body: any) {
     this.loader = true
     this.newComment = {
-      "postId": 8,
+      "postId": this.PostId,
       "email": email,
       "name": name,
       "body": body
