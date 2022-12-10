@@ -13,7 +13,11 @@
         <textarea matInput formControlName="body" placeholder="Body" #body></textarea>
     </mat-form-field>
 
-    <button type="submit">Send new post</button>
+    <div>
+        <button type="submit">Send new post</button>
+        <app-spinner *ngIf="loader"></app-spinner>
+    </div>
+
 </form>
 
 <!-- <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">

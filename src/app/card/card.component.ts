@@ -15,8 +15,9 @@ export class CardOverviewExample {
     displayFormAddPost: boolean = false
 
     addItem(newItem: any) {
-        this.items.push(newItem)
+        this.postsFromApi.splice(0, 0, newItem)
         console.log(newItem);
+        this.displayFormAddPost = false
     }
     constructor(
         private http: HttpClient,
