@@ -39,7 +39,7 @@ export class PostFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addNewItem(title: any, body: any) {
+  createNewPost(title: any, body: any) {
     this.loader = true
     console.log(title, body)
     this.newPost = { "userId": 1, "title": title, "body": body }

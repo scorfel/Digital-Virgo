@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CardOverviewExample } from './card/card.component'
+import { DisplayPosts } from './card/display-posts.component'
 import { PostDetailsComponent } from './post-details/post-details.component'
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {
-    path: '', component: CardOverviewExample,
+    path: '', component: DisplayPosts,
   },
-  { path: 'second-component', component: PostDetailsComponent },
+  {
+    path: 'post-details', component: PostDetailsComponent
+  },
 ];
 
 // const routes: Routes = [

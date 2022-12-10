@@ -8,7 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
-import { CardOverviewExample } from './card/card.component';
+import { DisplayPosts } from './card/display-posts.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -24,7 +24,7 @@ import { CommentFormComponent } from './comment-form/comment-form.component';
   declarations: [
     AppComponent,
     ToolbarOverviewExample,
-    CardOverviewExample,
+    DisplayPosts,
     PostDetailsComponent,
     PostFormComponent,
     SpinnerComponent,
