@@ -1,43 +1,21 @@
-.posts {
+.display-posts {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin: 10px;
     align-items: center;
+    margin-top: 86px;
 
     &__card {
         width: 100%;
+        display: table-cell;
+        font-size: 14px;
+        margin-left: 8px;
+        min-width: 120px;
     }
-}
 
-section {
-    margin-top: 66px
-}
-
-.example-label {
-    display: table-cell;
-    font-size: 14px;
-    margin-left: 8px;
-    min-width: 120px;
-}
-
-.example-button-row {
-    display: table-cell;
-    max-width: 600px;
-}
-
-.example-button-row .mat-mdc-button-base {
-    margin: 8px 8px 8px 0;
-}
-
-.example-flex-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.example-button-container {
-    display: flex;
-    justify-content: center;
-    width: 120px;
+    &__button {
+        display: table-cell;
+        max-width: 600px;
+    }
 }

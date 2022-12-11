@@ -1,10 +1,10 @@
-<form class="example-form" [formGroup]="checkoutForm" (ngSubmit)="createNewPost(title.value,body.value)">
-    <mat-form-field class="example-full-width">
+<form class="post-form" [formGroup]="checkoutForm" (ngSubmit)="createNewPost(title.value,body.value)">
+    <mat-form-field class="post-form__field">
         <mat-label>Title</mat-label>
         <input (ngModelChange)="checkTitleNotEmpty($event)" matInput formControlName="title" placeholder="Title" #title>
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="post-form__field">
         <mat-label>Enter your post</mat-label>
         <textarea (ngModelChange)="checkPostNotEmpty($event)" matInput formControlName="body" placeholder="Body"
             #body></textarea>

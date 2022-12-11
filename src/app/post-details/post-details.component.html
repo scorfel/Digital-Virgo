@@ -1,32 +1,36 @@
-<ng-container *ngIf="postDetails && userDetails ">
-    <mat-card class="example-card">
-        <mat-card-header>
-            <mat-card-subtitle>User : {{userDetails.name}}</mat-card-subtitle>
-            <mat-card-subtitle>Company : {{userDetails.company.name}}</mat-card-subtitle>
-            <mat-card-title>{{postDetails.title}}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <p>{{ postDetails.body }}</p>
-            <mat-divider></mat-divider>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button color="primary" (click)="showComment()">SHOW COMMENT</button>
-            <button mat-raised-button color="primary" (click)="showFormAddComment()">ADD COMMENT</button>
-        </mat-card-actions>
-    </mat-card>
-</ng-container>
+<div class="detail-post">
 
-<app-comment-form [PostId]="this.postDetails.id" *ngIf="showFormToAddComment" (newItemEvent)="addNewComment($event)">
-</app-comment-form>
+    <ng-container *ngIf="postDetails && userDetails ">
+        <mat-card class="detail-post__card">
+            <mat-card-header>
+                <mat-card-subtitle>User : {{userDetails.name}}</mat-card-subtitle>
+                <mat-card-subtitle>Company : {{userDetails.company.name}}</mat-card-subtitle>
+                <mat-card-title>{{postDetails.title}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>{{ postDetails.body }}</p>
+                <mat-divider></mat-divider>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="showComment()">SHOW COMMENT</button>
+                <button mat-raised-button color="primary" (click)="showFormAddComment()">ADD COMMENT</button>
+            </mat-card-actions>
+        </mat-card>
+    </ng-container>
 
-<ng-container *ngIf="showComments">
-    <mat-card *ngFor="let comment of postComments" class="example-card">
-        <mat-card-header>
-            <mat-card-subtitle>{{comment.email}}</mat-card-subtitle>
-            <mat-card-subtitle>{{comment.name}}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-            <p>{{comment.body}}</p>
-        </mat-card-content>
-    </mat-card>
-</ng-container>
+    <app-comment-form class="detail-post__app-comment-form" [PostId]="this.postDetails.id" *ngIf="showFormToAddComment"
+        (newItemEvent)="addNewComment($event)">
+    </app-comment-form>
+
+    <ng-container *ngIf="showComments">
+        <mat-card *ngFor="let comment of postComments" class="detail-post__comments">
+            <mat-card-header>
+                <mat-card-subtitle>{{comment.email}}</mat-card-subtitle>
+                <mat-card-subtitle>{{comment.name}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>{{comment.body}}</p>
+            </mat-card-content>
+        </mat-card>
+    </ng-container>
+</div>

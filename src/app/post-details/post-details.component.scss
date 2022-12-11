@@ -1,4 +1,19 @@
-.example-card {
-    max-width: 400px;
-    margin-top: 56px;
+.detail-post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__card {
+        width: 50%;
+        margin-top: 86px;
+    }
+
+    &__app-comment-form {
+        width: 50%;
+    }
+
+    &__comments {
+        width: 50%;
+        margin-top: 10px;
+    }
 }
