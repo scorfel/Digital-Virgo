@@ -1,5 +1,18 @@
 <mat-toolbar color="primary" class="header">
     <mat-toolbar-row>
-        <span>Posts and Comments Application</span>
+        <a class="header__link" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
+            <span>Posts and Comments Application</span>
+        </a>
     </mat-toolbar-row>
 </mat-toolbar>
+<!-- <mat-toolbar color="primary" class="header">
+    <mat-toolbar-row>
+        <span>Posts and Comments Application</span>
+    </mat-toolbar-row>
+</mat-toolbar> -->
+
+
+<!-- <a routerLink="/post-details/" [queryParams]="{ id: post.id}" routerLinkActive="active"
+ariaCurrentWhenActive="page">
+<mat-card-content>{{post.title}}</mat-card-content>
+</a> -->
