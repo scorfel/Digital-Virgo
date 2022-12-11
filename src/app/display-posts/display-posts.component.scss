@@ -1,5 +1,17 @@
+.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px;
+    align-items: center;
+
+    &__card {
+        width: 100%;
+    }
+}
+
 section {
-    margin-top: 56px
+    margin-top: 66px
 }
 
 .example-label {

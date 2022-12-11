@@ -1,17 +1,23 @@
 <app-spinner *ngIf="!getAllPosts"></app-spinner>
 <ng-container *ngIf="getAllPosts">
-    <section>
-        <div class="example-button-row">
-            <button (click)="toggleFormAddPost()" mat-raised-button color="primary">Add new post</button>
-        </div>
-    </section>
-    <app-post-form *ngIf="displayFormAddPost" (newItemEvent)="addNewPost($event)"></app-post-form>
+    <div class="posts">
 
-    <mat-card *ngFor="let post of postsFromApi">
-        <a routerLink="/post-details/" [queryParams]="{ id: post.id}" routerLinkActive="active"
-            ariaCurrentWhenActive="page">
-            <mat-card-content>{{post.title}}</mat-card-content>
-        </a>
-    </mat-card>
+        <section>
+            <div class="example-button-row">
+                <button (click)="toggleFormAddPost()" mat-raised-button color="primary">Add new post</button>
+            </div>
+        </section>
+
+        <app-post-form *ngIf="displayFormAddPost" (newItemEvent)="addNewPost($event)"></app-post-form>
+
+        <mat-card class="posts__card" *ngFor="let post of postsFromApi">
+            <a routerLink="/post-details/" [queryParams]="{ id: post.id}" routerLinkActive="active"
+                ariaCurrentWhenActive="page">
+                <mat-card-content>{{post.title}}</mat-card-content>
+            </a>
+        </mat-card>
+
+    </div>
+
 </ng-container>
 <router-outlet></router-outlet>
