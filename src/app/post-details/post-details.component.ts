@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Post, Comment, User } from './post'
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-post-details',
@@ -27,13 +28,13 @@ export class PostDetailsComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.id = params['id'];
     });
-    this.http.get<Post>('https://jsonplaceholder.typicode.com/posts/' + this.id)
+    this.http.get<Post>(environment.urlApi + '/posts/' + this.id)
       .subscribe(response => {
         this.postDetails = response
-        this.http.get<User>('https://jsonplaceholder.typicode.com/users/' + this.postDetails.userId)
+        this.http.get<User>(environment.urlApi + '/users/' + this.postDetails.userId)
           .subscribe(response => {
             this.userDetails = response,
-              this.http.get<Array<Comment>>(`https://jsonplaceholder.typicode.com/posts/${this.postDetails.id}/comments`)
+              this.http.get<Array<Comment>>(environment.urlApi + `/posts/${this.postDetails.id}/comments`)
                 .subscribe(response => { this.postComments = response })
           })
       })

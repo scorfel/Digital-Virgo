@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 interface NewComment {
   postId: number,
@@ -46,11 +47,11 @@ export class CommentFormComponent {
       "name": name,
       "body": body
     }
-    this.http.post<NewComment>(`https://jsonplaceholder.typicode.com/posts/${this.newComment.postId}/comments`, this.newComment)
-      .subscribe(response => {
-        this.newItemEvent.emit(response);
-        this.addCommentForm.reset();
-        this.loader = false;
+    this.http.post<NewComment>(environment.urlApi + `/posts/${this.newComment.postId}/comments`, this.newComment)
+      .subscribe({
+        next: (response) => { this.newItemEvent.emit(response); this.addCommentForm.reset(); this.loader = false; },
+        error: (e) => console.error(e),
+        complete: () => console.info('complete')
       })
   }
 

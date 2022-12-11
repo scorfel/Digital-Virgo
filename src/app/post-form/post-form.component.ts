@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 interface NewPost {
   userId: number,
@@ -37,7 +38,7 @@ export class PostFormComponent {
   createNewPost(title: string, body: string) {
     this.loader = true
     this.newPost = { "userId": 1, "title": title, "body": body }
-    this.http.post<NewPost>('https://jsonplaceholder.typicode.com/posts', this.newPost)
+    this.http.post<NewPost>(environment.urlApi + '/posts', this.newPost)
       .subscribe(response => {
         this.newItemEvent.emit(response);
         this.checkoutForm.reset();

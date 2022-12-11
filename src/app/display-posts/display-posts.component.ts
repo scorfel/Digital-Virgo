@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 interface Posts {
     userId: number,
@@ -25,8 +26,12 @@ export class DisplayPosts {
     ) { }
 
     ngOnInit(): void {
-        this.http.get<Array<Posts>>('https://jsonplaceholder.typicode.com/posts')
-            .subscribe(response => { this.postsFromApi = response, this.getAllPosts = true })
+        this.http.get<Array<Posts>>(environment.urlApi + '/posts')
+            .subscribe({
+                next: (data) => { this.postsFromApi = data, this.getAllPosts = true },
+                error: (e) => console.error(e),
+                complete: () => console.info('complete')
+            })
     }
 
     addNewPost(newPost: any) {
